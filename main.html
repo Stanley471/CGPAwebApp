@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CGPA Calculator</title>
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <!--Link-->
+    <div>
+        <ul>
+            <li><a href="#intro_text">Calculate CGPA</a></li>
+            <li><a href="#news">Export CGPA</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#about">About</a></li>
+          </ul>
+    </div>
+
+    <!--Intro text-->
+    <div id="intro_text">
+        <h1><pre>Calculate your CGPA
+Determine your future</pre>
+        </h1>
+        <p>a CGPA calculator designed for Nigerian students
+        </p>
+        <button onclick="startForm()">Get Started</button>
+
+    </div>
+    <div id="form">
+        <form action="">
+            <fieldset>
+                <label for="name">Name:</label> <br>
+                <input type="text" id="name" placeholder="Stanley Obimma"><br>
+                <label for="department">Department:</label><br>
+                <input type="text" id="department" placeholder="Computer Science"><br>
+                <label for="matric_no">Matric No.:</label> <br>
+                <input type="text" id="matric_no" placeholder="2027/788685"><br>
+                <input type="submit" value="Calculate CGPA">
+            </fieldset>
+            
+
+        </form>
+
+    </div>
+    
+    <script src="main.js"></script>
+</body>
+</html>
