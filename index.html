@@ -10,7 +10,7 @@
 <body>
     
     <!--Link-->
-    <div>
+    <div class="navBar">
         <ul>
             <li><a href="#intro_text">Calculate CGPA</a></li>
             <li><a href="#news">Export CGPA</a></li>
@@ -21,31 +21,37 @@
 
     <!--Intro text-->
     <div id="intro_text">
-        <h1><pre>Calculate your CGPA
-Determine your future</pre>
-        </h1>
-        <p>a CGPA calculator designed for Nigerian students
+        <pre>Calculate your CGPA
+Determine your academic future
+
+</pre>
+        
+        <p>empower your academic journey using the most accurate CGPA calculator designed for Nigerian students
         </p>
         <button onclick="startForm()">Get Started</button>
 
     </div>
     <div id="form">
-        <form action="">
-            <fieldset>
+                <legend>&#128227Please fill this form to get started</legend>
                 <label for="name">Name:</label> <br>
-                <input type="text" id="name" placeholder="Stanley Obimma"><br>
-                <label for="department">Department:</label><br>
-                <input type="text" id="department" placeholder="Computer Science"><br>
+                <input type="text" id="name" name="name"><br>
+                <label for="department" >Department:</label><br>
+                <input type="text" id="department" name="dept"><br>
                 <label for="matric_no">Matric No.:</label> <br>
-                <input type="text" id="matric_no" placeholder="2027/788685"><br>
-                <input type="submit" value="Calculate CGPA">
-            </fieldset>
-            
-
-        </form>
-
+                <input type="text" id="matric_no" name="matric_no"><br>
+                <button onclick="submitName()">Continue</button>
     </div>
+
+    <div id="inputScores">
+        <label>Enter number of courses</label><br>
+        <input type="number" id="noOfCourses" min="1" max="100"><br>
+        <button onclick="Scores()" id="Continuebtn">Continue</button>
+    </div>
+
+    
+    
     
     <script src="main.js"></script>
 </body>
 </html>
+
