@@ -2,27 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>CGPA Calculator</title>
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     
     <!--Link-->
-    <div class="navBar">
-        <ul>
-            <li><a href="#intro_text">Calculate CGPA</a></li>
-            <li><a href="#news">Export CGPA</a></li>
-            <li><a href="#contact">Contact</a></li>
+     <nav class="mobile-menu">
+    <div class="menu-container">
+      <div class="logo">CGPA Calculator</div>
+      <button class="hamburger" aria-label="Menu">
+      <i class="fas fa-bars"></i>
+      </button>
+        <ul class="menu">
+            <li><a href="">Calculate CGPA</a></li>
+            <li><a onclick="exportCGPA()">Export CGPA</a></li>
+            <li><a >Contact</a></li>
             <li><a href="#about">About</a></li>
           </ul>
     </div>
+    </nav>
 
     <!--Intro text-->
     <div id="intro_text">
         <pre>Calculate your CGPA
-Determine your academic future
+
+your academic future
 
 </pre>
         
@@ -32,23 +39,52 @@ Determine your academic future
 
     </div>
     <div id="form">
+        <form onsubmit="return false;">
                 <legend>&#128227Please fill this form to get started</legend>
                 <label for="name">Name:</label> <br>
-                <input type="text" id="name" name="name"><br>
+                <input  type="text" id="name" name="name" required><br>
                 <label for="department" >Department:</label><br>
-                <input type="text" id="department" name="dept"><br>
+                <input type="text" id="department" name="dept" required><br>
                 <label for="matric_no">Matric No.:</label> <br>
-                <input type="text" id="matric_no" name="matric_no"><br>
-                <button onclick="submitName()">Continue</button>
+                <input type="text" id="matric_no" name="matric_no" required><br>
+                <button type = "submit" onclick="submitName()">Continue</button>
+        </form>   
     </div>
 
+        <form onsubmit="return false;">
     <div id="inputScores">
         <label>Enter number of courses</label><br>
-        <input type="number" id="noOfCourses" min="1" max="100"><br>
-        <button onclick="Scores()" id="Continuebtn">Continue</button>
+        <input type="number" id="noOfCourses" min="1" max="100" required><br>
+        <button type="submit" onclick="Scores()" id="Continuebtn">Continue</button>
+        
     </div>
-
+        </form>
+    <div id = "exportCGPA">
+        <p>This feature is not available yet</p>
+    </div>
+    <div id="about">
+        <h1>About The Developer</h1>
+        <img src="stan1.JPG" alt="Obimma Stanley">
+        <p>Hi there, I'm Obimma Stanley, an undergraduate at the department of Computer Sciences, UNN. I'm a passionate developer with a love for crafting problem-solving applications such as this CGPA calculator.</p>
+        <p>This is my first solo project and I'd be focusing on learning and building more scalable web applications. My proficiency in some of the major high level programming languages; Python, JavaScript and Java would be a plus in my learn and build journey.</p>
+        <p>For collaborations or contributions, contact me on my social media handles below</p>
+    </div>
     
+
+    <div class="social-media">
+  <a href="https://facebook.com/stanley.obimma.37872" aria-label="Facebook" style="color:#0a66c2"><i class="fab fa-facebook"></i></a>
+  <a href="https://x.com/stanleyjv4" aria-label="X" style="color :black"><i class="fa-brands fa-x"></i></a>
+  <a href="www.linkedin.com/in/stanley-obimma-b978b6299" aria-label="LinkedIn"><i class="fab fa-linkedin" style="color:#0a66c2"></i></a>
+  <a href="www.wa.me/2349019889555" aria-label="Whatsapp"><i class="fab fa-whatsapp" style="  color: #169220;
+"></i></a>
+</div>
+       
+    
+    <footer id="footer">
+         
+        <pre>All Rights Reserved</pre>
+        <pre>Developed by Stanley</pre>
+    </footer>
     
     
     <script src="main.js"></script>
