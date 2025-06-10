@@ -1,155 +1,220 @@
-var studentData = {};
-var i;
-
-function startForm() {
-    document.getElementById("intro_text").style.display = "none";
-    document.getElementById("exportCGPA").style.display = "none";
-    document.getElementById("form").style.display = "block";
-    console.log("Form activated");
-}
-function exportCGPA() {
-    document.getElementById("intro_text").style.display = "none";
-    document.getElementById("form").style.display = "none";
-    document.getElementById("exportCGPA").style.display = "block";
-    console.log("Export CGPA not currently available");
-}
-function submitName() {
-    studentData.name = document.getElementById("name").value;
-    studentData.department = document.getElementById("department").value;
-    studentData.matricNo = document.getElementById("matric_no").value;
-    if (!studentData.name || !studentData.department || !studentData.matricNo ) {
-        alert("Please input all fields")
-    } else{
-    document.getElementById("form").style.display = "none";
-    document.getElementById("inputScores").style.display = "block";
-    console.log(`Data submitted: ${studentData.name}, ${studentData.department}, ${studentData.matricNo}`);
-    }
-
-}
-function Scores() {
-    studentData.noOfCourses = document.getElementById("noOfCourses").value;
-    if (!studentData.noOfCourses) {
-        alert("Please input all fields");
-    } else{
-    document.getElementById("Continuebtn").style.display = "none"
-    console.log(`No of Courses submitted: ${studentData.noOfCourses}`);
-    for (i = 0; i < studentData.noOfCourses; i++) {
-        var html = `
-<br><form onsubmit ="return false;><div><legend><em>Course ${i + 1}</em></legend><label for="credit${i + 1}" style"color:black" >Enter credit unit</label><br>
-<input type="number" min="1" max="15" id="credit${i + 1}" value ="1"><br>
-<label for="grade${i+1}">Enter grade</label><br>
-<select id= "grade${i+1}" required>
-        <option value="A">A</option>
-        <option value="B">B</option>
-        <option value="C">C</option>
-        <option value="D">D</option>
-        <option value="E">E</option>
-        <option value="F">F</option>
-    </select><br id ="last">
-</div></form>
-`
-        document.getElementById("inputScores").insertAdjacentHTML("beforeend", html);
-    }
-    var btn = document.createElement("button");
-    btn.innerHTML = "Calculate CGPA"
-    var btnEvent = document.createAttribute("onclick")
-    var btnID = document.createAttribute("id");
-    var btnType = document.createAttribute("type");
-    btnEvent.value = "calculateCGPA()";
-    btnID.value = "btnID";
-    btnType.value = "submit";
-    btn.setAttributeNode(btnEvent);
-    btn.setAttributeNode(btnID);
-    btn.setAttributeNode(btnType);
-    document.getElementById("inputScores").appendChild(btn)
-    }
+html{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-function calculateCGPA() {
-    var creditsArray = [];
-    var gradesArray = [];
-    var weightedArray = [];
-    var WeightedSum = 0;
-    var CreditSum = 0;
-    for (i = 0; i < studentData.noOfCourses; i++) {
-        creditsArray[i] = document.getElementById(`credit${i + 1}`).value;
-        var grades = document.getElementById(`grade${i + 1}`).value;
-        grades = grades.toUpperCase();
-
-        switch (grades) {
-            case 'A':
-                gradesArray[i] = 5;
-                break;
-            case 'B':
-                gradesArray[i] = 4;
-                break;
-            case 'C':
-                gradesArray[i] = 3;
-                break;
-            case 'D':
-                gradesArray[i] = 2;
-                break;
-            case 'E':
-                gradesArray[i] = 1;
-                break;
-            case 'F':
-                gradesArray[i] = 0
-
-            default:
-                alert("Please input grades")
-                break;
-        }
-        creditsArray = creditsArray.map(Number)
-
-        weightedArray[i] = creditsArray[i] * gradesArray[i];
-
-    }
-    console.log(creditsArray);
-    console.log(gradesArray);
-    console.log(weightedArray);
-    
-    for (i = 0; i < studentData.noOfCourses; i++) {
-        WeightedSum += weightedArray[i];
-        CreditSum += creditsArray[i];
-        
-    }
-    var CGPA = WeightedSum / CreditSum;
-    CGPA = parseFloat(CGPA).toFixed(2);
-
-    console.log(WeightedSum)
-    console.log(CreditSum)
-    console.log(`CGPA = ${CGPA}`);
-    //document.write(`Your CGPA is ${WeightedSum / CreditSum}`);
-    var result = `<div>
-        Your CGPA is:<h1>${CGPA}</h1></div>
-    `
-    document.getElementById("btnID").insertAdjacentHTML("afterend", result);
-    document.getElementById("btnID").style.display = "none"
-
-    
+*{margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-// Toggle mobile menu
-const hamburger = document.querySelector('.hamburger');
-const menu = document.querySelector('.menu');
-
-hamburger.addEventListener('click', () => {
-  menu.classList.toggle('active');
-  console.log("BUtton clicked")
+/* *TOP BAR LINKS */
+.mobile-menu {
   
-  // Change icon between hamburger and "X"
-  const icon = hamburger.querySelector('i');
-  if (menu.classList.contains('active')) {
-    icon.classList.replace('fa-bars', 'fa-times');
-  } else {
-    icon.classList.replace('fa-times', 'fa-bars');
+  width: 100%;
+  height: auto;
+  margin-bottom: 100px;
+}
+
+.menu-container {
+  top: 0;
+  background: linear-gradient(#169220, rgb(29, 230, 29));
+  color: white;
+  padding: 0;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  
+}
+
+.logo {
+  margin-left: 5px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Hamburger Icon */
+.hamburger {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: block; /
+}
+
+.menu {
+  list-style: none;
+  position: fixed;
+  top: 60px;
+  left: -100%;
+  width: 80%;
+  height: calc(100vh - 60px);
+  padding-left: 5px;
+  background: linear-gradient(#169220, rgb(29, 230, 29));
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2rem;
+  transition: left 0.3s ease;
+}
+
+.menu.active {
+  left: 0;
+}
+
+.menu li {
+  margin: 1.5rem 0;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+}
+
+.menu a:hover {
+  color: #f0a500;
+}
+
+/* Desktop menu */
+@media (min-width: 768px) {
+  .hamburger {
+    display: none;
   }
-});
+  
+  .menu {
+    position: static;
+    width: auto;
+    height: auto;
+    background: transparent;
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+  }
+  
+  .menu li {
+    margin: 0 1rem;
+  }
+}
 
-// Close menu when clicking a link (optional)
-document.querySelectorAll('.menu a').forEach(link => {
-  link.addEventListener('click', () => {
-    menu.classList.remove('active');
-    hamburger.querySelector('i').classList.replace('fa-times', 'fa-bars');
-  });
-});
+  /*INTRO TEXT DIV*/
 
+  #intro_text, #about{
+    display: block;
+    color: white;
+    background: linear-gradient(#169220, rgb(29, 230, 29));
+    height: auto;
+    width: 80%;
+    margin: 50px auto;
+    padding: 40px 20px;
+    border-radius: 20px;
+    text-align: center;
+    transition: 1s;
+  }
+  
+  
+  button:hover{
+    background: linear-gradient(green,rgb(81, 241, 121));
+  }
+  button:active{
+    background: green;
+  }
+  input[type="submit"], button{
+    background: linear-gradient(green,rgb(81, 241, 121));
+    margin: 10px 0;
+    border-radius: 10px;
+    height: auto;
+    padding: 10px;
+    border: none;
+    color: white;
+  }
+pre{
+  font-weight: 10px;
+  font-size: 20px;
+text-align: center;}
+ #intro_text:hover{
+    transform: scale(0.95, 0.95);
+    transition: 1s;
+  }
+
+
+    /*FORM*/
+
+
+  
+  #form, #inputScores, #exportCGPA{
+    display: none;
+    width: 80%;
+    height: auto;
+    margin: 50px auto;
+    padding: 40px 20px;
+    border-radius: 20px;
+    background: linear-gradient(#169220, rgb(29, 230, 29));
+    color: white
+ 
+  }
+  
+  fieldset{
+    border-style: none;
+    border-radius: 10px;
+  }
+  legend{
+    text-align: center;
+    font-family: Arial,  sans-serif;
+    margin: 10px auto;
+
+  }
+  input{
+    margin-bottom: 10px;
+    background: local;
+    border: none;
+    border-bottom: 1px solid;
+    outline: none;
+    height: 30px;
+    color: whitesmoke;
+    
+  }
+  
+
+  label{
+    font-size: larger;
+    font-weight: 600;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+option{
+  outline: none;
+  border-radius: 5px;
+}
+img{
+  max-width: 40%;
+  border-radius: 50px;
+}
+.social-media {
+  display: flex;
+  gap: 15px;
+}
+
+.social-media a {
+  font-size: 24px;
+  transition: color 0.3s;
+}
+
+.social-media a:hover {
+  color: #1877f2; 
+}
+
+.social-media a:hover .fa-twitter { color: #1da1f2; }
+.social-media a:hover .fa-instagram { color: #e4405f; }
+.social-media a:hover .fa-linkedin { color: #0a66c2; }
+.social-media a:hover .fa-youtube { color: #ff0000; }
+
+  #footer{
+    display: block;
+    background: linear-gradient(#169220, rgb(29, 230, 29));
+    color: white;
+    margin: 30px auto;
+    margin-bottom: 0;
+    padding: 10px;
+  }
