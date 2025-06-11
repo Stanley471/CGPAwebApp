@@ -35,7 +35,7 @@ function Scores() {
     console.log(`No of Courses submitted: ${studentData.noOfCourses}`);
     for (i = 0; i < studentData.noOfCourses; i++) {
         var html = `
-<br><form onsubmit ="return false;><div><legend><em>Course ${i + 1}</em></legend><label for="credit${i + 1}" style"color:black" >Enter credit unit</label><br>
+<br><form onsubmit ="return false;><div><legend><h3>Course ${i + 1}</h3></legend><label for="credit${i + 1}" style"color:black" >Enter credit unit</label><br>
 <input type="number" min="1" max="15" id="credit${i + 1}" value ="1"><br>
 <label for="grade${i+1}">Enter grade</label><br>
 <select id= "grade${i+1}" required>
