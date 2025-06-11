@@ -134,7 +134,7 @@ pre{
   font-weight: 10px;
   font-size: 20px;
 text-align: center;}
- #intro_text:hover{
+ #intro_text:active{
     transform: scale(0.95, 0.95);
     transition: 1s;
   }
