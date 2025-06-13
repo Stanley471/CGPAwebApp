@@ -6,6 +6,8 @@ function startForm() {
     document.getElementById("exportCGPA").style.display = "none";
     document.getElementById("form").style.display = "block";
     console.log("Form activated");
+    document.getElementById("about").style.display = "none";
+
 }
 function exportCGPA() {
     document.getElementById("intro_text").style.display = "none";
@@ -35,7 +37,11 @@ function Scores() {
     console.log(`No of Courses submitted: ${studentData.noOfCourses}`);
     for (i = 0; i < studentData.noOfCourses; i++) {
         var html = `
-<br><form onsubmit ="return false;><div><legend><h3>Course ${i + 1}</h3></legend><label for="credit${i + 1}" style"color:black" >Enter credit unit</label><br>
+<br>
+<form onsubmit ="return false;>
+ <div id="gradeAndScore">
+<pre>Course ${i+1}</pre>
+    <label for="credit${i + 1}" style"color:black" >Enter credit unit</label><br>
 <input type="number" min="1" max="15" id="credit${i + 1}" value ="1"><br>
 <label for="grade${i+1}">Enter grade</label><br>
 <select id= "grade${i+1}" required>
@@ -49,6 +55,7 @@ function Scores() {
 </div></form>
 `
         document.getElementById("inputScores").insertAdjacentHTML("beforeend", html);
+        
     }
     var btn = document.createElement("button");
     btn.innerHTML = "Calculate CGPA"
@@ -119,12 +126,24 @@ function calculateCGPA() {
     console.log(WeightedSum)
     console.log(CreditSum)
     console.log(`CGPA = ${CGPA}`);
-    //document.write(`Your CGPA is ${WeightedSum / CreditSum}`);
+    var cgpaClass = "";
+    if (CGPA>=4.5) {
+        cgpaClass = "First Class Division";
+    } else if(CGPA>=3.5){
+        cgpaClass = "Second Class Upper divison";
+    }
+    else if(CGPA>=2.4){
+        cgpaClass = "Second Class Lower Division";
+    }
+    else {
+        cgpaClass = "Third Class";
+
+    }
     var result = `<div>
-        Your CGPA is:<h1>${CGPA}</h1></div>
+        Your CGPA is:<h1>${CGPA}</h1><h3>${cgpaClass}</h3></div>
     `
     document.getElementById("btnID").insertAdjacentHTML("afterend", result);
-    document.getElementById("btnID").style.display = "none"
+    document.getElementById("btnID").style.display = "none";
 
     
 }
@@ -149,4 +168,3 @@ document.querySelectorAll('.menu a').forEach(link => {
     hamburger.querySelector('i').classList.replace('fa-times', 'fa-bars');
   });
 });
-
