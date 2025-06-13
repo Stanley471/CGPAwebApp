@@ -16,20 +16,25 @@ function exportCGPA() {
     console.log("Export CGPA not currently available");
 }
 function submitName() {
-    studentData.name = document.getElementById("name").value;
-    studentData.department = document.getElementById("department").value;
-    studentData.matricNo = document.getElementById("matric_no").value;
-    if (!studentData.name || !studentData.department || !studentData.matricNo ) {
-        alert("Please input all fields")
-    } else{
-    document.getElementById("form").style.display = "none";
+    //studentData.name = document.getElementById("name").value;
+    //studentData.department = document.getElementById("department").value;
+    //studentData.matricNo = document.getElementById("matric_no").value;
+    //if (!studentData.name || !studentData.department || !studentData.matricNo ) {
+    //    alert("Please input all fields")
+    //} else{
+    document.getElementById("intro_text").style.display = "none";
     document.getElementById("inputScores").style.display = "block";
-    console.log(`Data submitted: ${studentData.name}, ${studentData.department}, ${studentData.matricNo}`);
-    }
+    document.getElementById("about").style.display = "none";
+    document.getElementById("exportCGPA").style.display = "none";
+
+
+    //console.log(`Data submitted: ${studentData.name}, ${studentData.department}, ${studentData.matricNo}`);
+    
 
 }
 function Scores() {
     studentData.noOfCourses = document.getElementById("noOfCourses").value;
+    document.getElementById("noOfCourses").disabled =true;
     if (!studentData.noOfCourses) {
         alert("Please input all fields");
     } else{
@@ -140,7 +145,8 @@ function calculateCGPA() {
 
     }
     var result = `<div>
-        Your CGPA is:<h1>${CGPA}</h1><h3>${cgpaClass}</h3></div>
+        Your CGPA is:<h1>${CGPA}</h1><h3>${cgpaClass}</h3><br><br><br><p>Soon you would be able to track your GPA progress, add new courses as results are being released as well as, export your grades to family and friends!!</p>
+</div>
     `
     document.getElementById("btnID").insertAdjacentHTML("afterend", result);
     document.getElementById("btnID").style.display = "none";
