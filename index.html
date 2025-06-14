@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +11,7 @@
 <body>
     
     <!--Link-->
+    
      <nav class="mobile-menu">
     <div class="menu-container">
       <div class="logo">CGPA Calculator</div>
@@ -24,7 +26,7 @@
           </ul>
     </div>
     </nav>
-
+<div class="content">
     <!--Intro text-->
     <div id="intro_text">
         <pre>Calculate your CGPA
@@ -53,7 +55,7 @@ your academic future
 
         <form onsubmit="return false;">
     <div id="inputScores">
-        <label>Enter number of courses</label><br>
+        <label id="noOfCourses">Enter number of courses</label><br>
         <input type="number" id="noOfCourses" min="1" max="100" required><br>
         <button type="submit" onclick="Scores()" id="Continuebtn">Continue</button>
         
@@ -71,22 +73,19 @@ your academic future
     </div>
     
 
-    <div class="social-media" id="social">
+   
+       
+</div>    
+    <footer class="footer">
+        <p>&copy; 2024 Stanley Obimma. All rights reserved.</p>
+        <p>Made with <i class="fas fa-heart" style="color: red;"></i> by Stanley</p>
   <a href="https://facebook.com/stanley.obimma.37872" aria-label="Facebook" style="color:#0a66c2"><i class="fab fa-facebook"></i></a>
-  <a href="https://x.com/stanleyjv4" aria-label="X" style="color :black"><i class="fa-brands fa-x"></i></a>
+     <a href="https://x.com/stanleyjv4" aria-label="X" style="color :black"><i class="fa-brands fa-x"></i></a>
   <a href="https://linkedin.com/in/stanley-obimma-b978b6299" aria-label="LinkedIn"><i class="fab fa-linkedin" style="color:#0a66c2"></i></a>
   <a href="https://wa.me/2349019889555" aria-label="Whatsapp"><i class="fab fa-whatsapp" style="  color: #169220;
 "></i></a>
-</div>
-       
-    
-    <footer id="footer">
-         
-        <pre>All Rights Reserved</pre>
-        <pre>Developed by Stanley</pre>
+
     </footer>
-    
-    
     <script src="main.js"></script>
 </body>
 </html>
