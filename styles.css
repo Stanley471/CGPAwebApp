@@ -39,6 +39,10 @@ body{
   font-size: 1.5rem;
   font-weight: bold;
 }
+.logo a{
+  color: white;
+  text-decoration: none;
+}
 
 /* Hamburger Icon */
 .hamburger {
@@ -126,7 +130,7 @@ body{
   
   button:hover{
     background: linear-gradient(green,rgb(81, 241, 121));
-    
+
   }
   button:active{
     background: green;
