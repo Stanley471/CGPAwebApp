@@ -32,7 +32,7 @@
         <div id="userInput">
             <form onsubmit="return false">
                 <legend>Fill the following correctly</legend>
-                <div class="input-group">
+               <!-- <div class="input-group">
                   <label for="name">Name:</label><br>
                   <input type="text" id="name" required><br>
                 </div>
@@ -43,15 +43,15 @@
                 <div class="input-group">
                   <label for="matric_no">Matric No.:</label><br>
                   <input type="text" id="matric_no" required><br>
-                </div>
+                </div>  -->
                 <div class="input-group">
                   <label for="noOfCourses">Number of Courses:</label><br>
                   <input type="number" id="noOfCourses" min="1" max="100" required><br>
                 </div>
-                <button type="submit" onclick="start()">Continue</button>
-                <button id="closeInputBtn" type="button" onclick="closeUserInput()" aria-label="Close" style="position:absolute;top:10px;right:14px;background:transparent;border:1px solid #444;border-radius:50%;font-size:1.7rem;color:#f6f6f6;cursor:pointer;z-index:10;width:36px;height:36px;line-height:32px;text-align:center;">&times;</button>
+                <button type="submit" id="Continuebtn" onclick="Scores()">Continue</button>
+                <bton id="closeInputBtn" type="button" onclick="closeUserInput()" aria-label="Close" style="position:absolute;top:10px;right:14px;background:transparent;border:1px solid #444;border-radius:50%;font-size:1.7rem;color:#f6f6f6;cursor:pointer;z-index:10;width:36px;height:36px;line-height:32px;text-align:center;">&times;</button>
             </form>
-            <h1 id="message"></h1>
+            
         </div>
        
   

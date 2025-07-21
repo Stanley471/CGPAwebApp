@@ -59,8 +59,8 @@ function Scores() {
     </select><br id ="last">
 </div></form>
 `
-        document.getElementById("inputScores").insertAdjacentHTML("beforeend", html);
-        
+        document.getElementById("userInput").insertAdjacentHTML("beforeend", html);
+
     }
     var btn = document.createElement("button");
     btn.innerHTML = "Calculate CGPA"
@@ -73,7 +73,7 @@ function Scores() {
     btn.setAttributeNode(btnEvent);
     btn.setAttributeNode(btnID);
     btn.setAttributeNode(btnType);
-    document.getElementById("inputScores").appendChild(btn)
+    document.getElementById("userInput").appendChild(btn)
     }
 }
 
