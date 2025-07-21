@@ -153,6 +153,44 @@ function calculateCGPA() {
 
     
 }
+function go() {
+    var intro = document.getElementById('intro_text');
+    intro.style.transition = 'opacity 0.7s, transform 0.7s';
+    intro.style.opacity = '0';
+    intro.style.transform = 'translateX(-100px)';
+    setTimeout(function() {
+        intro.style.display = 'none';
+        var userInput = document.getElementById('userInput');
+        userInput.style.display = 'block';
+        userInput.style.opacity = '0';
+        userInput.style.transform = 'translateX(100px)';
+        userInput.style.transition = 'opacity 0.7s, transform 0.7s';
+        setTimeout(function() {
+            userInput.style.opacity = '1';
+            userInput.style.transform = 'translateX(0)';
+        }, 50);
+    }, 700);
+}
+
+function closeUserInput() {
+    var userInput = document.getElementById('userInput');
+    userInput.style.transition = 'opacity 0.7s, transform 0.7s';
+    userInput.style.opacity = '0';
+    userInput.style.transform = 'translateX(100px)';
+    setTimeout(function() {
+        userInput.style.display = 'none';
+        var intro = document.getElementById('intro_text');
+        intro.style.display = 'block';
+        intro.style.opacity = '0';
+        intro.style.transform = 'translateX(-100px)';
+        intro.style.transition = 'opacity 0.7s, transform 0.7s';
+        setTimeout(function() {
+            intro.style.opacity = '1';
+            intro.style.transform = 'translateX(0)';
+        }, 50);
+    }, 700);
+}
+
 const hamburger = document.querySelector('.hamburger');
 const menu = document.querySelector('.menu');
 
